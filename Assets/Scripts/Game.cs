@@ -4,6 +4,7 @@ public class Game : MonoBehaviour
 {
     public int width = 16;
     public int height = 16;
+    public int mineCount = 32;
 
     private Board board;
     private Cell[,] state;
@@ -23,6 +24,7 @@ public class Game : MonoBehaviour
         state = new Cell[width, height];
 
         GenerateCells();
+        GenerateMines();
 
         Camera.main.transform.position = new Vector3(width / 2f, height / 2f, -10f);
         board.Draw(state);
@@ -39,6 +41,31 @@ public class Game : MonoBehaviour
                 cell.type = Cell.Type.Empty;
                 state[x, y] = cell;
             }
+        }
+    }
+
+    private void GenerateMines()
+    {
+        for (int i = 0; i < mineCount; i++)
+        {
+            int x = Random.Range(0, width);
+            int y = Random.Range(0, height);
+
+            while (state[x,y].type == Cell.Type.Mine)
+            {
+                x++;
+                if (x >= width)
+                {
+                    x = 0;
+                    y++;
+                }
+                if (y >= height)
+                {
+                    y = 0;
+                }
+            }
+
+            state[x, y].type = Cell.Type.Mine;
         }
     }
 }
