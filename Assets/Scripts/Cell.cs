@@ -3,6 +3,7 @@ using UnityEngine;
 public struct Cell
 {
     public enum Type {
+        Invalid,
         Empty,
         Mine,
         Number
