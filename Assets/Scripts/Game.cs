@@ -10,6 +10,11 @@ public class Game : MonoBehaviour
     private Cell[,] state;
     private bool gameOver;
 
+    private void OnValidate()
+    {
+        mineCount = Mathf.Clamp(mineCount, 0, width * height);
+    }
+
     private void Awake()
     {
         board = GetComponentInChildren<Board>();
@@ -23,6 +28,7 @@ public class Game : MonoBehaviour
 
     private void NewGame()
     {
+        gameOver = false;
         state = new Cell[width, height];
 
         GenerateCells();
@@ -31,6 +37,23 @@ public class Game : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(width / 2f, height / 2f, -10f);
         board.Draw(state);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            NewGame();
+
+        if (!gameOver)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                Flag();
+            } else if (Input.GetMouseButtonDown(0))
+            {
+                Reveal();
+            }
+        }
     }
 
     private void GenerateCells()
@@ -115,23 +138,6 @@ public class Game : MonoBehaviour
         return count;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-            NewGame();
-            
-        if (!gameOver)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                Flag();
-            } else if (Input.GetMouseButtonDown(0))
-            {
-                Reveal();
-            }
-        }
-    }
-
     private void Flag()
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -167,6 +173,7 @@ public class Game : MonoBehaviour
             default:
                 cell.revealed = true;
                 state[cellPosition.x, cellPosition.y] = cell;
+                CheckWinCondition();
                 break;
         }
 
