@@ -118,6 +118,9 @@ public class Game : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Flag();
+        } else if (Input.GetMouseButtonDown(0))
+        {
+            Reveal();
         }
     }
 
@@ -131,6 +134,20 @@ public class Game : MonoBehaviour
             return;
         
         cell.flagged = !cell.flagged;
+        state[cellPosition.x, cellPosition.y] = cell;
+        board.Draw(state);
+    }
+
+    private void Reveal()
+    {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
+        Cell cell = GetCell(cellPosition.x, cellPosition.y);
+
+        if (cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
+            return;
+        
+        cell.revealed = true;
         state[cellPosition.x, cellPosition.y] = cell;
         board.Draw(state);
     }
