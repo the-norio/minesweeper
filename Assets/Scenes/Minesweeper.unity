@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 4
   height: 4
-  mineCount: 32
+  mineCount: 2
 --- !u!1 &1895602287
 GameObject:
   m_ObjectHideFlags: 0
