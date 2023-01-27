@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296537794}
   - component: {fileID: 1296537793}
+  - component: {fileID: 1296537795}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -252,6 +253,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1296537795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296537792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b638028d3187ed14aa26bca51176dfcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 16
+  height: 16
 --- !u!1 &1895602287
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +278,7 @@ GameObject:
   - component: {fileID: 1895602288}
   - component: {fileID: 1895602290}
   - component: {fileID: 1895602289}
+  - component: {fileID: 1895602291}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -372,3 +388,28 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1895602291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895602287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1d83c5bba4d2c4cb1383a42ede0643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileUnknown: {fileID: 11400000, guid: 2042a39312e00b04dafab8d771fae47d, type: 2}
+  tileEmpty: {fileID: 11400000, guid: 7631d4fb4aea34a43b9731a0e4996402, type: 2}
+  tileMine: {fileID: 11400000, guid: d1fa8f45a8165964f877122d7b57d1c6, type: 2}
+  tileExploded: {fileID: 11400000, guid: 6802a19779c564a4db9a21548bf46a01, type: 2}
+  tileFlag: {fileID: 11400000, guid: bcfd354d077ebdb428e4145dba899457, type: 2}
+  tileNum1: {fileID: 0}
+  tileNum2: {fileID: 0}
+  tileNum3: {fileID: 0}
+  tileNum4: {fileID: 0}
+  tileNum5: {fileID: 0}
+  tileNum6: {fileID: 0}
+  tileNum7: {fileID: 0}
+  tileNum8: {fileID: 0}
